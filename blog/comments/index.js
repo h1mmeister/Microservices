@@ -2,18 +2,21 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { randomBytes } = require("crypto");
 const cors = require("cors");
-const { default: axios } = require("axios");
+const axios = require("axios");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// This will store comments by Post ID
 const commentsByPostId = {};
 
+// Get all the comments for a Post
 app.get("/posts/:id/comments", (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
 });
 
+// Add a comment to a Post
 app.post("/posts/:id/comments", async (req, res) => {
   const commentId = randomBytes(4).toString("hex");
   const { content } = req.body;
@@ -42,5 +45,5 @@ app.post("/events", (req, res) => {
 
 // Listen on port 4001
 app.listen(4001, () => {
-  console.log("Listening on 4001");
+  console.log("Listening on Port 4001");
 });

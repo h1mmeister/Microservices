@@ -8,13 +8,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// This will store all of the Posts
 const posts = {};
 
-// Get all the posts
+// Get all the Posts
 app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
+// Add a Post
 app.post("/posts", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
@@ -43,5 +45,5 @@ app.post("/events", (req, res) => {
 
 // Listening on 4000
 app.listen(4000, () => {
-  console.log("Listening on 4000");
+  console.log("Listening on Port 4000");
 });
