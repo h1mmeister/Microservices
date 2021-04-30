@@ -12,6 +12,7 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
+//  Receiving the event from the event bus
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
 
@@ -25,9 +26,7 @@ app.post("/events", (req, res) => {
     const post = posts[postId];
     post.comments.push({ id, content });
   }
-
-  console.log(posts);
-
+  // console.log(posts);
   res.send({});
 });
 
