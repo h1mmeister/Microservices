@@ -6,7 +6,7 @@ const PostCreate = () => {
 
   const onSubmit = async (event) => {
     // this is the post request to our /posts service
-    await axios.post("http://localhost:4000/posts", {
+    await axios.post("http://posts.com/posts/create", {
       title,
     });
     setTitle(""); // this would blank out the input after submission
